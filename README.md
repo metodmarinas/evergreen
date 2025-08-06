@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Checkout - AquaFlex Pro</title>
+    <title>Evergreen - AquaFlex Pro: La Revolución del Riego Inteligente</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts - Inter -->
@@ -12,6 +12,9 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f8fafc; /* Light blue-gray background */
+        }
+        .hero-bg {
+            background: linear-gradient(to bottom, #d1fae5, #a7f3d0); /* Light green gradient */
         }
         .btn-primary {
             background-color: #10b981; /* Emerald green */
@@ -24,291 +27,420 @@
         .btn-primary:hover {
             background-color: #059669; /* Darker emerald */
         }
-        .payment-method-card {
-            border: 2px solid #e2e8f0;
+        .section-title {
+            color: #065f46; /* Dark green */
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+        .offer-banner {
+            background-color: #fcd34d; /* Amber */
+            color: #92400e; /* Dark amber text */
+            font-weight: 700;
+            padding: 0.75rem 1.5rem;
             border-radius: 0.75rem;
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
-        .payment-method-card.selected {
-            border-color: #10b981; /* Emerald green */
-            box-shadow: 0 4px 6px rgba(16, 185, 129, 0.2);
-            background-color: #ecfdf5; /* Light emerald */
-        }
-        .payment-method-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1000; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            overflow: auto; /* Enable scroll if needed */
-            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: #fefefe;
-            margin: auto;
-            padding: 2.5rem;
-            border-radius: 1rem;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            width: 90%;
-            max-width: 500px;
-            text-align: center;
-            position: relative;
-        }
-        .close-button {
-            color: #aaa;
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-            font-size: 2rem;
-            font-weight: bold;
-            cursor: pointer;
-        }
-        .close-button:hover,
-        .close-button:focus {
-            color: #333;
-            text-decoration: none;
-            cursor: pointer;
+        .critical-notice {
+            background-color: #fef2f2; /* Light red */
+            color: #b91c1c; /* Dark red text */
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            border: 1px solid #ef4444;
+            font-weight: 500;
         }
     </style>
 </head>
 <body class="text-gray-800">
 
-    <!-- Header for Checkout Page -->
-    <header class="bg-white shadow-md py-4 px-6 md:px-12 flex justify-center items-center rounded-b-xl">
-        <div class="text-3xl font-bold text-emerald-600">Evergreen Checkout</div>
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4 px-6 md:px-12 flex justify-between items-center sticky top-0 z-50 rounded-b-xl">
+        <div class="text-3xl font-bold text-emerald-600">Evergreen</div>
+        <nav class="hidden md:flex space-x-8">
+            <a href="#inicio" class="text-gray-600 hover:text-emerald-600 font-medium transition-colors">Inicio</a>
+            <a href="#caracteristicas" class="text-gray-600 hover:text-emerald-600 font-medium transition-colors">Características</a>
+            <a href="#como-funciona" class="text-gray-600 hover:text-emerald-600 font-medium transition-colors">Cómo Funciona</a>
+            <a href="#opiniones" class="text-gray-600 hover:text-emerald-600 font-medium transition-colors">Opiniones</a>
+            <a href="#faq" class="text-gray-600 hover:text-emerald-600 font-medium transition-colors">Preguntas Frecuentes</a>
+            <a href="checkout.html" class="text-gray-600 hover:text-emerald-600 font-medium transition-colors">Comprar</a> <!-- Link updated -->
+            <a href="#mayorista" class="text-emerald-600 hover:text-emerald-800 font-bold transition-colors">Venta Mayorista</a> <!-- New link for wholesale -->
+        </nav>
+        <a href="checkout.html" class="btn-primary hidden md:block">¡Comprar Ahora!</a> <!-- Link updated -->
+        <!-- Mobile Menu Button (Hamburger) -->
+        <button class="md:hidden text-gray-600 focus:outline-none">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
     </header>
 
-    <main class="container mx-auto px-6 py-12 md:py-16 max-w-4xl">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-center text-emerald-800 mb-10">Finalizá tu Compra</h1>
-
-        <div class="bg-white p-8 md:p-10 rounded-xl shadow-lg border border-gray-200">
-            <p class="text-red-600 font-semibold text-center mb-6">
-                <strong class="font-bold">¡Aviso Importante!</strong> Esta es una página de checkout <strong class="font-bold">simulada</strong>. No se procesarán pagos reales ni se recopilará información sensible. Es solo para demostración.
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-bg py-16 md:py-24 text-center relative overflow-hidden rounded-b-xl">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="offer-banner mx-auto mb-8 animate-pulse">
+                ¡PROMO LANZAMIENTO! ENVÍO GRATIS A TODO EL PAÍS
+                <span class="ml-2 text-sm">(¡Solo por tiempo limitado!)</span>
+            </div>
+            <h1 class="text-5xl md:text-6xl font-extrabold text-emerald-800 leading-tight mb-6">
+                AquaFlex Pro: La Revolución del Riego Inteligente.
+            </h1>
+            <p class="text-xl md:text-2xl text-emerald-700 mb-10">
+                Olvidate de los enredos y el peso. Tu jardín, huerto y espacios exteriores impecables, sin esfuerzo.
             </p>
 
-            <form id="checkoutForm" class="space-y-8">
-                <!-- Sección de Información de Envío -->
-                <div>
-                    <h2 class="text-2xl font-bold text-emerald-700 mb-6 border-b pb-3 border-gray-200">1. Datos de Envío y Contacto</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="nombre" class="block text-gray-700 text-sm font-bold mb-2">Nombre Completo:</label>
-                            <input type="text" id="nombre" name="nombre" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Tu Nombre y Apellido" required>
-                        </div>
-                        <div>
-                            <label for="email" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
-                            <input type="email" id="email" name="email" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="tu@email.com" required>
-                        </div>
-                        <div>
-                            <label for="telefono" class="block text-gray-700 text-sm font-bold mb-2">Teléfono:</label>
-                            <input type="tel" id="telefono" name="telefono" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Ej: +54 9 11 XXXXXXXX" required>
-                        </div>
-                        <div>
-                            <label for="direccion" class="block text-gray-700 text-sm font-bold mb-2">Dirección:</label>
-                            <input type="text" id="direccion" name="direccion" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Calle y número" required>
-                        </div>
-                        <div>
-                            <label for="ciudad" class="block text-gray-700 text-sm font-bold mb-2">Ciudad:</label>
-                            <input type="text" id="ciudad" name="ciudad" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Tu Ciudad" required>
-                        </div>
-                        <div>
-                            <label for="provincia" class="block text-gray-700 text-sm font-bold mb-2">Provincia:</label>
-                            <input type="text" id="provincia" name="provincia" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Tu Provincia" required>
-                        </div>
-                        <div>
-                            <label for="codigo_postal" class="block text-gray-700 text-sm font-bold mb-2">Código Postal:</label>
-                            <input type="text" id="codigo_postal" name="codigo_postal" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Ej: C1000AAA" required>
-                        </div>
-                    </div>
-                </div>
+            <!-- Placeholder for Video/Image -->
+            <div class="bg-gray-200 rounded-xl shadow-xl overflow-hidden mb-12 mx-auto w-full max-w-3xl aspect-video flex items-center justify-center text-gray-500 text-lg">
+                <img src="https://placehold.co/800x450/e0f2f7/065f46?text=VIDEO+DEMOSTRATIVO+AQUAFLEX+PRO" alt="Video demostrativo AquaFlex Pro" class="w-full h-auto object-cover rounded-xl">
+            </div>
 
-                <!-- Sección de Método de Pago -->
-                <div>
-                    <h2 class="text-2xl font-bold text-emerald-700 mb-6 border-b pb-3 border-gray-200">2. Método de Pago</h2>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        <!-- Mercado Pago -->
-                        <label for="mpago" class="payment-method-card flex items-center space-x-4">
-                            <input type="radio" id="mpago" name="payment_method" value="mercado_pago" class="form-radio text-emerald-600 h-5 w-5" checked>
-                            <img src="https://placehold.co/80x30/f0f0f0/333?text=Mercado+Pago" alt="Mercado Pago Logo" class="h-8 object-contain">
-                            <span class="font-semibold text-lg">Mercado Pago</span>
-                        </label>
-                        <!-- Tarjeta de Crédito -->
-                        <label for="tarjeta" class="payment-method-card flex items-center space-x-4">
-                            <input type="radio" id="tarjeta" name="payment_method" value="tarjeta_credito" class="form-radio text-emerald-600 h-5 w-5">
-                            <img src="https://placehold.co/80x30/f0f0f0/333?text=Tarjetas" alt="Tarjetas de Crédito Logo" class="h-8 object-contain">
-                            <span class="font-semibold text-lg">Tarjeta de Crédito</span>
-                        </label>
-                        <!-- PayPal -->
-                        <label for="paypal" class="payment-method-card flex items-center space-x-4">
-                            <input type="radio" id="paypal" name="payment_method" value="paypal" class="form-radio text-emerald-600 h-5 w-5">
-                            <img src="https://placehold.co/80x30/f0f0f0/333?text=PayPal" alt="PayPal Logo" class="h-8 object-contain">
-                            <span class="font-semibold text-lg">PayPal</span>
-                        </label>
-                    </div>
+            <a href="checkout.html" class="btn-primary text-xl px-8 py-4 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+                ¡Quiero mi AquaFlex Pro Ahora!
+            </a>
 
-                    <!-- Detalles de Tarjeta de Crédito (solo si se selecciona) -->
-                    <div id="creditCardDetails" class="mt-6 p-6 bg-gray-50 rounded-lg border border-gray-200 hidden">
-                        <h3 class="text-xl font-bold text-gray-700 mb-4">Datos de la Tarjeta</h3>
-                        <div class="space-y-4">
-                            <div>
-                                <label for="numero_tarjeta" class="block text-gray-700 text-sm font-bold mb-2">Número de Tarjeta:</label>
-                                <input type="text" id="numero_tarjeta" name="numero_tarjeta" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="XXXX XXXX XXXX XXXX">
-                            </div>
-                            <div class="grid grid-cols-2 gap-4">
-                                <div>
-                                    <label for="vencimiento" class="block text-gray-700 text-sm font-bold mb-2">Fecha de Vencimiento (MM/AA):</label>
-                                    <input type="text" id="vencimiento" name="vencimiento" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="MM/AA">
-                                </div>
-                                <div>
-                                    <label for="cvv" class="block text-gray-700 text-sm font-bold mb-2">CVV:</label>
-                                    <input type="text" id="cvv" name="cvv" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="XXX">
-                                </div>
-                            </div>
-                            <div>
-                                <label for="nombre_titular" class="block text-gray-700 text-sm font-bold mb-2">Nombre del Titular:</label>
-                                <input type="text" id="nombre_titular" name="nombre_titular" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-emerald-500" placeholder="Como aparece en la tarjeta">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Resumen del Pedido (Simulado) -->
-                <div>
-                    <h2 class="text-2xl font-bold text-emerald-700 mb-6 border-b pb-3 border-gray-200">3. Resumen del Pedido</h2>
-                    <div class="bg-gray-50 p-6 rounded-lg space-y-3">
-                        <div class="flex justify-between text-lg">
-                            <span>1x Kit AquaFlex Pro</span>
-                            <span>$16.000</span>
-                        </div>
-                        <div class="flex justify-between text-lg text-emerald-700 font-semibold">
-                            <span>Envío</span>
-                            <span>¡GRATIS!</span>
-                        </div>
-                        <div class="flex justify-between text-2xl font-bold text-emerald-800 pt-4 border-t border-gray-200">
-                            <span>Total</span>
-                            <span>$16.000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn-primary w-full py-4 text-2xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
-                    Finalizar Compra
-                </button>
-            </form>
-        </div>
-    </main>
-
-    <!-- Modal de Confirmación de Pago / Aviso de Integración -->
-    <div id="paymentModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeModal()">&times;</span>
-            <div class="text-center">
-                <div class="text-6xl text-red-500 mb-6">⚠️</div>
-                <h2 class="text-3xl font-bold text-red-700 mb-4">¡Atención! Proceso de Pago</h2>
-                <p class="text-lg text-gray-700 mb-6">
-                    Para que el pago sea <strong class="font-bold">real y seguro</strong>, esta página requiere una integración con un <strong class="font-bold">servidor backend</strong> y las APIs de las pasarelas de pago (Mercado Pago, tarjetas, PayPal).
+            <div class="critical-notice mx-auto mt-12 max-w-2xl">
+                <p class="text-sm md:text-base">
+                    <strong class="font-bold">¡Importante!</strong> Para una expansión óptima y máxima eficiencia, AquaFlex Pro requiere ser utilizada en circuitos de agua con <strong class="font-bold">alta presión</strong> o con una <strong class="font-bold">bomba presurizadora</strong>.
                 </p>
-                <p class="text-md text-gray-600 mb-6">
-                    Actualmente, esta es una <strong class="font-bold">simulación</strong>. No se ha procesado ningún pago real ni se ha guardado tu información.
-                </p>
-                <p class="text-md text-gray-600">
-                    Si deseas implementar un sistema de pago real, necesitarás un desarrollo de backend y seguridad profesional.
-                </p>
-                <button onclick="window.location.href='index.html'" class="btn-primary mt-8 px-6 py-3 bg-red-600 hover:bg-red-700">Entendido, Volver al Inicio</button>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Sección "Descubrí el Poder de AquaFlex Pro" (Beneficios Clave) -->
+    <section id="caracteristicas" class="py-16 md:py-24 bg-white rounded-xl shadow-lg mx-auto my-12 max-w-6xl px-6 md:px-12">
+        <h2 class="section-title text-center">Descubrí el Poder de AquaFlex Pro</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <!-- Benefit 1: Expansión Inteligente -->
+            <div class="bg-emerald-50 p-8 rounded-xl shadow-md text-center transform hover:scale-105 transition-transform duration-300">
+                <div class="text-5xl mb-4 text-emerald-600">💧</div> <!-- Icon placeholder -->
+                <h3 class="text-2xl font-semibold mb-3 text-emerald-800">Expansión Inteligente x3</h3>
+                <p class="text-gray-700">De 7.5m a <strong class="font-semibold">22.5m</strong> en segundos. Cubrí cada rincón de tu jardín sin esfuerzo y sin ocupar espacio.</p>
+            </div>
+            <!-- Benefit 2: Látex Reforzado Premium -->
+            <div class="bg-emerald-50 p-8 rounded-xl shadow-md text-center transform hover:scale-105 transition-transform duration-300">
+                <div class="text-5xl mb-4 text-emerald-600">🌿</div> <!-- Icon placeholder -->
+                <h3 class="text-2xl font-semibold mb-3 text-emerald-800">Látex Reforzado Premium</h3>
+                <p class="text-gray-700">Fabricada con látex de alta calidad, ultra-resistente, duradera y anti-dobleces. ¡Adiós a las mangueras que se quiebran!</p>
+            </div>
+            <!-- Benefit 3: Kit Completo Multi-Función -->
+            <div class="bg-emerald-50 p-8 rounded-xl shadow-md text-center transform hover:scale-105 transition-transform duration-300">
+                <div class="text-5xl mb-4 text-emerald-600">🚿</div> <!-- Icon placeholder -->
+                <h3 class="text-2xl font-semibold mb-3 text-emerald-800">Kit Completo Multi-Función</h3>
+                <p class="text-gray-700">Incluye una pistola de riego con <strong class="font-semibold">7 tipos de chorro</strong>: niebla, completo, cono, centrado, plano, ducha y jet. ¡Versatilidad total!</p>
+            </div>
+            <!-- Benefit 4: Conexión Segura Anti-Fugas -->
+            <div class="bg-emerald-50 p-8 rounded-xl shadow-md text-center transform hover:scale-105 transition-transform duration-300">
+                <div class="text-5xl mb-4 text-emerald-600">🔗</div> <!-- Icon placeholder -->
+                <h3 class="text-2xl font-semibold mb-3 text-emerald-800">Conexión Segura Anti-Fugas</h3>
+                <p class="text-gray-700">Conector a rosca universal de ½" que garantiza una instalación rápida y sin derrames. Sin preocupaciones, solo riego.</p>
+            </div>
+            <!-- Benefit 5: Diseño Compacto y Ligero -->
+            <div class="bg-emerald-50 p-8 rounded-xl shadow-md text-center transform hover:scale-105 transition-transform duration-300">
+                <div class="text-5xl mb-4 text-emerald-600">📦</div> <!-- Icon placeholder -->
+                <h3 class="text-2xl font-semibold mb-3 text-emerald-800">Diseño Compacto y Ligero</h3>
+                <p class="text-gray-700">Se guarda en cualquier lugar, ¡sin ocupar espacio ni cargar peso! Ideal para almacenar en pequeños espacios.</p>
+            </div>
+            <!-- Benefit 6: Marca Kushiro -->
+            <div class="bg-emerald-50 p-8 rounded-xl shadow-md text-center transform hover:scale-105 transition-transform duration-300">
+                <div class="text-5xl mb-4 text-emerald-600">🏆</div> <!-- Icon placeholder -->
+                <h3 class="text-2xl font-semibold mb-3 text-emerald-800">Marca Kushiro: Calidad Garantizada</h3>
+                <p class="text-gray-700">Tu inversión está respaldada por la reconocida marca Kushiro, sinónimo de durabilidad y rendimiento.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección "Vidas Reales, Riego Increíble" (Testimonios) -->
+    <section id="opiniones" class="py-16 md:py-24 bg-gray-50 rounded-xl shadow-lg mx-auto my-12 max-w-6xl px-6 md:px-12">
+        <h2 class="section-title text-center">Vidas Reales, Riego Increíble</h2>
+        <p class="text-center text-lg text-gray-600 mb-12">
+            ¡Más de <strong class="text-emerald-600">cientos de familias argentinas</strong> ya eligen AquaFlex Pro cada día y quedan fascinadas!
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <p class="text-gray-700 italic mb-4">"¡Es increíble! Mi jardín nunca estuvo tan verde y me ahorro un montón de esfuerzo. La recomiendo 100%."</p>
+                <div class="flex items-center">
+                    <img src="https://placehold.co/60x60/e0f2f7/065f46?text=MJ" alt="Foto de María J." class="w-12 h-12 rounded-full mr-4 object-cover">
+                    <div>
+                        <p class="font-semibold text-emerald-700">María J.</p>
+                        <p class="text-sm text-gray-500">Córdoba, Argentina</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial 2 -->
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <p class="text-gray-700 italic mb-4">"Adiós a las mangueras pesadas y los enredos. La AquaFlex Pro es una maravilla, se expande y se guarda en un segundo."</p>
+                <div class="flex items-center">
+                    <img src="https://placehold.co/60x60/e0f2f7/065f46?text=RA" alt="Foto de Roberto A." class="w-12 h-12 rounded-full mr-4 object-cover">
+                    <div>
+                        <p class="font-semibold text-emerald-700">Roberto A.</p>
+                        <p class="text-sm text-gray-500">Buenos Aires, Argentina</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Testimonial 3 -->
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <p class="text-gray-700 italic mb-4">"La pistola de 7 funciones es un golazo, puedo regar todo el jardín y lavar el auto con una sola manguera. ¡Un producto esencial!"</p>
+                <div class="flex items-center">
+                    <img src="https://placehold.co/60x60/e0f2f7/065f46?text=LC" alt="Foto de Laura C." class="w-12 h-12 rounded-full mr-4 object-cover">
+                    <div>
+                        <p class="font-semibold text-emerald-700">Laura C.</p>
+                        <p class="text-sm text-gray-500">Rosario, Argentina</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-10">
+            <a href="checkout.html" class="btn-primary px-6 py-3">¡Comprá la tuya y sumate a la experiencia!</a> <!-- Link updated -->
+        </div>
+    </section>
+
+    <!-- Sección "Cómo Funciona: Simplicidad en Cada Riego" -->
+    <section id="como-funciona" class="py-16 md:py-24 bg-white rounded-xl shadow-lg mx-auto my-12 max-w-6xl px-6 md:px-12">
+        <h2 class="section-title text-center">Cómo Funciona: Simplicidad en Cada Riego</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+            <!-- Step 1 -->
+            <div class="p-6 rounded-xl bg-blue-50 shadow-md">
+                <div class="text-5xl mb-4 text-blue-600">1️⃣</div>
+                <h3 class="text-xl font-semibold mb-2 text-blue-800">Conectá</h3>
+                <p class="text-gray-700">Uní tu AquaFlex Pro a cualquier canilla con buena presión de agua o a tu bomba presurizadora.</p>
+            </div>
+            <!-- Step 2 -->
+            <div class="p-6 rounded-xl bg-blue-50 shadow-md">
+                <div class="text-5xl mb-4 text-blue-600">2️⃣</div>
+                <h3 class="text-xl font-semibold mb-2 text-blue-800">Activá</h3>
+                <p class="text-gray-700">Abrí la canilla y observá cómo se expande mágicamente de 7.5m a ¡22.5 metros!</p>
+            </div>
+            <!-- Step 3 -->
+            <div class="p-6 rounded-xl bg-blue-50 shadow-md">
+                <div class="text-5xl mb-4 text-blue-600">3️⃣</div>
+                <h3 class="text-xl font-semibold mb-2 text-blue-800">Regá</h3>
+                <p class="text-gray-700">Elegí el chorro ideal con la pistola de 7 funciones y disfrutá de un riego eficiente.</p>
+            </div>
+            <!-- Step 4 -->
+            <div class="p-6 rounded-xl bg-blue-50 shadow-md">
+                <div class="text-5xl mb-4 text-blue-600">4️⃣</div>
+                <h3 class="text-xl font-semibold mb-2 text-blue-800">Guardá</h3>
+                <p class="text-gray-700">Cerrá la canilla, el agua se drena y la manguera se contrae para un guardado sin esfuerzo.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección "Preguntas Frecuentes (FAQ)" -->
+    <section id="faq" class="py-16 md:py-24 bg-gray-50 rounded-xl shadow-lg mx-auto my-12 max-w-6xl px-6 md:px-12">
+        <h2 class="section-title text-center">Preguntas Frecuentes</h2>
+        <div class="space-y-6">
+            <!-- FAQ Item 1 -->
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <h3 class="text-xl font-semibold mb-2 text-emerald-700">¿AquaFlex Pro requiere bomba presurizadora?</h3>
+                <p class="text-gray-700">Sí, para una expansión óptima y máxima eficiencia, AquaFlex Pro requiere ser utilizada en circuitos de agua con <strong class="font-bold">alta presión</strong> o con una <strong class="font-bold">bomba presurizadora</strong>. Sin la presión adecuada, la manguera no alcanzará su longitud máxima.</p>
+            </div>
+            <!-- FAQ Item 2 -->
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <h3 class="text-xl font-semibold mb-2 text-emerald-700">¿Qué longitud alcanza la manguera?</h3>
+                <p class="text-gray-700">En reposo mide 7.5 metros y se expande hasta <strong class="font-bold">22.5 metros</strong> (casi 23 metros) con la presión de agua adecuada.</p>
+            </div>
+            <!-- FAQ Item 3 -->
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <h3 class="text-xl font-semibold mb-2 text-emerald-700">¿Qué incluye el kit de riego?</h3>
+                <p class="text-gray-700">El kit incluye la manguera AquaFlex Pro de 23 metros y una <strong class="font-bold">pistola de riego con 7 funciones</strong> de salida.</p>
+            </div>
+            <!-- FAQ Item 4 -->
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <h3 class="text-xl font-semibold mb-2 text-emerald-700">¿De qué material está fabricada la manguera?</h3>
+                <p class="text-gray-700">Está fabricada con <strong class="font-bold">látex de alta calidad</strong>, lo que le confiere gran durabilidad, resistencia y flexibilidad.</p>
+            </div>
+            <!-- FAQ Item 5 -->
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <h3 class="text-xl font-semibold mb-2 text-emerald-700">¿Es compatible con cualquier canilla?</h3>
+                <p class="text-gray-700">Sí, cuenta con un <strong class="font-bold">conector a rosca de 1/2"</strong> que es universal y compatible con la mayoría de las canillas.</p>
+            </div>
+            <!-- FAQ Item 6 -->
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <h3 class="text-xl font-semibold mb-2 text-emerald-700">¿Cuánto tiempo tarda el envío?</h3>
+                <p class="text-gray-700">Los tiempos de envío varían según la localidad. Para CABA y GBA, la entrega estimada es de X a Y días hábiles. Para el interior del país, de A a B días hábiles. Te enviaremos un código de seguimiento una vez despachado tu pedido.</p>
+            </div>
+            <!-- FAQ Item 7 -->
+            <div class="bg-white p-6 rounded-xl shadow-md border border-gray-200">
+                <h3 class="text-xl font-semibold mb-2 text-emerald-700">¿Ofrecen garantía?</h3>
+                <p class="text-gray-700">Sí, AquaFlex Pro cuenta con una garantía de <strong class="font-bold">X meses</strong> por defectos de fabricación. Para más detalles, consulta nuestra política de garantía.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección "¡Tu Jardín Te Lo Pide! Comprá Ahora" (El llamado a la acción final) -->
+    <section id="comprar" class="py-16 md:py-24 bg-emerald-700 text-white text-center rounded-xl shadow-lg mx-auto my-12 max-w-6xl px-6 md:px-12">
+        <h2 class="text-4xl md:text-5xl font-extrabold mb-8">¡Tu Jardín Te Lo Pide! Comprá Ahora</h2>
+        <p class="text-xl md:text-2xl mb-12">
+            Aprovechá nuestras ofertas exclusivas y transformá tu experiencia de riego.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-3xl mx-auto">
+            <!-- Option 1: Single Kit -->
+            <div class="bg-white text-gray-800 p-8 rounded-xl shadow-xl flex flex-col justify-between transform hover:scale-105 transition-transform duration-300 border-4 border-transparent hover:border-emerald-400">
+                <h3 class="text-3xl font-bold mb-4 text-emerald-800">1 Kit AquaFlex Pro</h3>
+                <p class="text-5xl font-extrabold mb-6 text-emerald-600">$16.000</p>
+                <p class="text-lg mb-8 text-gray-600">Ideal para jardines pequeños o como tu primera manguera inteligente.</p>
+                <a href="checkout.html" class="btn-primary w-full py-3 text-xl">Comprar 1 Unidad</a> <!-- Link updated -->
+            </div>
+            <!-- Option 2: Two Kits (Best Value) -->
+            <div class="bg-white text-gray-800 p-8 rounded-xl shadow-xl flex flex-col justify-between transform hover:scale-105 transition-transform duration-300 border-4 border-emerald-400 relative">
+                <span class="absolute top-0 right-0 bg-amber-500 text-white text-sm font-bold px-4 py-1 rounded-bl-lg rounded-tr-xl">¡MÁS VENDIDO!</span>
+                <h3 class="text-3xl font-bold mb-4 text-emerald-800">2 Kits AquaFlex Pro</h3>
+                <p class="text-5xl font-extrabold mb-2 text-emerald-600">$24.000</p>
+                <p class="text-xl font-semibold text-red-500 mb-6">¡La 2da unidad al 50% OFF!</p>
+                <p class="text-lg mb-8 text-gray-600">El combo perfecto para vos y un amigo, o para cubrir múltiples áreas de riego.</p>
+                <a href="checkout.html" class="btn-primary w-full py-3 text-xl bg-amber-500 hover:bg-amber-600">Comprar 2 Unidades</a> <!-- Link updated -->
+            </div>
+        </div>
+
+        <div class="mt-12 text-lg">
+            <p>Compra 100% Segura | Envío Rápido a Domicilio | Atención al Cliente Premium</p>
+        </div>
+    </section>
+
+    <!-- Sección "Venta Mayorista" (New Section) -->
+    <section id="mayorista" class="py-16 md:py-24 bg-blue-50 rounded-xl shadow-lg mx-auto my-12 max-w-6xl px-6 md:px-12">
+        <h2 class="section-title text-center text-blue-800">AquaFlex Pro para Comercios: ¡Oportunidad Mayorista!</h2>
+        <p class="text-center text-lg text-gray-700 mb-12">
+            Sumá el producto estrella del verano a tu negocio y ofrecé a tus clientes la revolución del riego inteligente.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div class="space-y-6">
+                <h3 class="text-2xl font-bold text-blue-700 mb-4">¿Por qué ofrecer AquaFlex Pro en tu negocio?</h3>
+                <ul class="list-disc list-inside text-gray-700 space-y-3">
+                    <li><strong class="font-semibold">Producto de Alta Demanda:</strong> Vendemos cientos de unidades por día al consumidor final. ¡Tus clientes lo buscarán!</li>
+                    <li><strong class="font-semibold">Margen de Ganancia Atractivo:</strong> Precios mayoristas competitivos para asegurar tu rentabilidad.</li>
+                    <li><strong class="font-semibold">Fácil Almacenamiento:</strong> Su diseño compacto optimiza el espacio en tu depósito y estanterías.</li>
+                    <li><strong class="font-semibold">Calidad y Confianza:</strong> Respaldo de la marca Kushiro, sinónimo de durabilidad y rendimiento.</li>
+                    <li><strong class="font-semibold">Soporte de Marketing:</strong> Te brindamos material gráfico y apoyo para la promoción en tu local.</li>
+                </ul>
+            </div>
+            <div class="bg-white p-8 rounded-xl shadow-md border border-blue-200">
+                <h3 class="text-2xl font-bold text-blue-700 mb-6 text-center">Consultá por Venta Mayorista</h3>
+                <!-- Form updated to send email via mailto -->
+                <form action="mailto:mariasjonathan2@gmail.com" method="post" enctype="text/plain" class="space-y-4">
+                    <div>
+                        <label for="nombre_contacto" class="block text-gray-700 text-sm font-bold mb-2">Nombre del Contacto:</label>
+                        <input type="text" id="nombre_contacto" name="Nombre del Contacto" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Tu Nombre Completo" required>
+                    </div>
+                    <div>
+                        <label for="nombre_negocio" class="block text-gray-700 text-sm font-bold mb-2">Nombre del Negocio / Razón Social:</label>
+                        <input type="text" id="nombre_negocio" name="Nombre del Negocio" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: Ferretería El Jardín" required>
+                    </div>
+                    <div>
+                        <label for="cuit" class="block text-gray-700 text-sm font-bold mb-2">CUIT:</label>
+                        <input type="text" id="cuit" name="CUIT" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="XX-XXXXXXXX-X" required>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="telefono_mayorista" class="block text-gray-700 text-sm font-bold mb-2">Teléfono:</label>
+                            <input type="tel" id="telefono_mayorista" name="Telefono" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: +54 9 11 41843144" required>
+                        </div>
+                        <div>
+                            <label for="email_mayorista" class="block text-gray-700 text-sm font-bold mb-2">Email:</label>
+                            <input type="email" id="email_mayorista" name="Email" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="tu@email.com" required>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="localidad_mayorista" class="block text-gray-700 text-sm font-bold mb-2">Localidad:</label>
+                            <input type="text" id="localidad_mayorista" name="Localidad" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ej: Buenos Aires" required>
+                        </div>
+                        <div>
+                            <label for="cantidad_interesada" class="block text-gray-700 text-sm font-bold mb-2">Cantidad de Unidades Interesadas (aprox.):</label>
+                            <select id="cantidad_interesada" name="Cantidad Interesada" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                <option value="">Seleccionar</option>
+                                <option value="50-99">50 - 99 unidades</option>
+                                <option value="100-299">100 - 299 unidades</option>
+                                <option value="300+">300 o más unidades</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="mensaje_mayorista" class="block text-gray-700 text-sm font-bold mb-2">Mensaje (opcional):</label>
+                        <textarea id="mensaje_mayorista" name="Mensaje" rows="4" class="shadow appearance-none border rounded-xl w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Contanos más sobre tu consulta..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-full py-3 text-xl bg-blue-600 hover:bg-blue-700">Enviar Consulta Mayorista</button>
+                </form>
+            </div>
+        </div>
+        <div class="mt-12 text-center text-gray-600">
+            <p>También podés contactarnos directamente a nuestro email: <a href="mailto:mariasjonathan2@gmail.com" class="text-blue-600 hover:underline">mariasjonathan2@gmail.com</a> o llamarnos al <a href="tel:+541141843144" class="text-blue-600 hover:underline">+54 11 41843144</a></p>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-300 py-12 px-6 md:px-12 rounded-t-xl">
+        <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4">Evergreen</h3>
+                <p class="text-sm">La solución definitiva para un riego fácil, eficiente y sin complicaciones en tu hogar, de la mano de AquaFlex Pro.</p>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4">Contacto</h3>
+                <p class="text-sm">Email: <a href="mailto:info@aquaflexpro.com" class="hover:text-emerald-400">info@aquaflexpro.com</a></p>
+                <p class="text-sm">WhatsApp: <a href="https://wa.me/5491141843144" class="hover:text-emerald-400">+54 9 11 41843144</a></p>
+                <p class="text-sm">Teléfono: <a href="tel:+541141843144" class="hover:text-emerald-400">+54 11 41843144</a></p>
+            </div>
+            <div>
+                <h3 class="text-xl font-bold text-white mb-4">Información</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#" class="hover:text-emerald-400">Política de Privacidad</a></li>
+                    <li><a href="#" class="hover:text-emerald-400">Términos y Condiciones</a></li>
+                    <li><a href="#" class="hover:text-emerald-400">Política de Envíos</a></li>
+                    <li><a href="#" class="hover:text-emerald-400">Política de Devoluciones y Garantía</a></li>
+                    <li><a href="#mayorista" class="hover:text-emerald-400 font-bold">Venta Mayorista</a></li>
+                </ul>
+                <div class="flex space-x-4 mt-6">
+                    <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.002 3.797.048.855.04 1.48.174 1.833.317.351.145.63.31.92.59.29.28.455.569.59 0.92.143.353.277.978.317 1.832.046 1.013.048 1.367.048 3.797s-.002 2.784-.048 3.797c-.04.855-.174 1.48-.317 1.833-.145.351-.31.63-.59.92-.28.29-.569.455-.92.59-.353.143-.978.277-1.832.317-1.013.046-1.367.048-3.797.048s-2.784-.002-3.797-.048c-.855-.04-1.48-.174-1.833-.317-.351-.145-.63-.31-.92-.59-.29-.28-.455-.569-.59-.92-.143-.353-.277-.978-.317-1.832-.046-1.013-.048-1.367-.048-3.797s.002-2.784.048-3.797c.04-.855.174-1.48.317-1.833.145-.351.31-.63.59-.92.28-.29.569-.455.92-.59.353-.143.978-.277 1.832-.317C9.537 2.002 9.89 2 12.315 2zm0 2.18a7.82 7.82 0 100 15.64 7.82 7.82 0 000-15.64zm-.007 1.88c-2.186 0-3.958 1.772-3.958 3.958s1.772 3.958 3.958 3.958 3.958-1.772 3.958-3.958-1.772-3.958-3.958-3.958zM17.7 6.13c-.808 0-1.465.657-1.465 1.465s.657 1.465 1.465 1.465 1.465-.657 1.465-1.465-.657-1.465-1.465-1.465z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-emerald-400 transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M22.162 5.655c-.65.288-1.34.48-2.06.568.75-.45 1.32-1.16 1.59-2.01-.7.41-1.47.71-2.29.87-.66-.7-1.6-1.14-2.65-1.14-2.01 0-3.64 1.63-3.64 3.64 0 .28.03.55.08.81C9.6 9.07 6.42 7.37 4.35 4.66c-.3.51-.47 1.1-.47 1.73 0 1.26.64 2.37 1.62 3.02-.6-.02-1.16-.18-1.65-.45v.04c0 1.77 1.26 3.25 2.94 3.59-.3.08-.6.13-.9.13-.22 0-.43-.02-.64-.06.47 1.46 1.82 2.52 3.43 2.55-1.25.98-2.82 1.57-4.54 1.57-.3 0-.6-.02-.89-.06C3.9 19.33 5.76 20 7.7 20c9.24 0 14.27-7.66 14.27-14.27 0-.22-.01-.44-.02-.66z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-sm text-gray-500 mt-8">
+            &copy; 2024 Evergreen. Todos los derechos reservados.
+        </div>
+    </footer>
 
     <script>
-        const checkoutForm = document.getElementById('checkoutForm');
-        const paymentMethodRadios = document.querySelectorAll('input[name="payment_method"]');
-        const creditCardDetails = document.getElementById('creditCardDetails');
-        const paymentModal = document.getElementById('paymentModal'); // Changed ID to be more generic
-
-        // Function to show/hide credit card details based on selection
-        paymentMethodRadios.forEach(radio => {
-            radio.addEventListener('change', () => {
-                if (document.getElementById('tarjeta').checked) {
-                    creditCardDetails.classList.remove('hidden');
-                    // Make credit card fields required when selected
-                    document.getElementById('numero_tarjeta').setAttribute('required', 'true');
-                    document.getElementById('vencimiento').setAttribute('required', 'true');
-                    document.getElementById('cvv').setAttribute('required', 'true');
-                    document.getElementById('nombre_titular').setAttribute('required', 'true');
-                } else {
-                    creditCardDetails.classList.add('hidden');
-                    // Remove required attribute when not selected
-                    document.getElementById('numero_tarjeta').removeAttribute('required');
-                    document.getElementById('vencimiento').removeAttribute('required');
-                    document.getElementById('cvv').removeAttribute('required');
-                    document.getElementById('nombre_titular').removeAttribute('required');
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Check if the href is an internal anchor or an external page
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
                 }
+                // If it's an external page (like checkout.html), let the default behavior happen
             });
         });
 
-        // Add 'selected' class to the parent label when a radio button is checked
-        paymentMethodRadios.forEach(radio => {
-            radio.closest('label').classList.remove('selected'); // Remove from all initially
-            if (radio.checked) {
-                radio.closest('label').classList.add('selected');
-            }
-            radio.addEventListener('change', () => {
-                paymentMethodRadios.forEach(r => r.closest('label').classList.remove('selected'));
-                radio.closest('label').classList.add('selected');
-            });
-        });
+        // Basic mobile menu toggle (can be enhanced with more complex JS)
+        const mobileMenuButton = document.querySelector('header button');
+        const navMenu = document.querySelector('header nav');
 
-
-        // Handle form submission (simulated)
-        checkoutForm.addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent actual form submission
-
-            // Basic validation (can be more robust)
-            const requiredFields = checkoutForm.querySelectorAll('[required]');
-            let allFieldsFilled = true;
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    allFieldsFilled = false;
-                    field.style.borderColor = '#ef4444'; // Highlight empty fields
-                } else {
-                    field.style.borderColor = ''; // Reset border
-                }
-            });
-
-            if (!allFieldsFilled) {
-                // In a real app, you'd show a user-friendly error message
-                console.error('Por favor, completa todos los campos requeridos.');
-                return;
-            }
-
-            // Show the modal explaining real payment integration
-            showModal();
-        });
-
-        // Modal functions
-        function showModal() {
-            paymentModal.style.display = 'flex';
-        }
-
-        function closeModal() {
-            paymentModal.style.display = 'none';
-        }
-
-        // Close modal if clicked outside (optional)
-        window.addEventListener('click', function(event) {
-            if (event.target == paymentModal) {
-                closeModal();
-            }
+        mobileMenuButton.addEventListener('click', () => {
+            navMenu.classList.toggle('hidden');
+            navMenu.classList.toggle('flex');
+            navMenu.classList.toggle('flex-col');
+            navMenu.classList.toggle('absolute');
+            navMenu.classList.toggle('top-full');
+            navMenu.classList.toggle('left-0');
+            navMenu.classList.toggle('w-full');
+            navMenu.classList.toggle('bg-white');
+            navMenu.classList.toggle('shadow-md');
+            navMenu.classList.toggle('py-4');
+            navMenu.classList.toggle('space-y-4');
+            navMenu.classList.toggle('items-center');
         });
     </script>
 </body>
